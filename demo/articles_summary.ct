@@ -1,0 +1,8 @@
+--dest-table: $public_schema.article_summary
+
+create table $dest_table
+( day date
+, article_id integer
+, pv bigint
+)
+;

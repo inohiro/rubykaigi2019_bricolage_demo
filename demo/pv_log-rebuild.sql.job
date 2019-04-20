@@ -1,0 +1,27 @@
+/*
+class: rebuild-drop
+dest-table: $public_schema.pv_log
+table-def: pv_log.ct
+src-tables:
+  pv_log: $public_schema.pv_log
+*/
+
+<% require 'securerandom' %>
+<% require 'time' %>
+
+insert into $dest_table
+( logtime
+, controller
+, action
+, id_param
+ )
+values
+<%= (0..10_000).map { |i|
+  [ "'#{(Time.now - SecureRandom.random_number(60*60*24*31)).iso8601}'",
+    "'articles'",
+    "'show'",
+    SecureRandom.random_number(100)
+  ].join(',')
+}.map {|c| "(#{c})" }.join(',')
+%>
+;

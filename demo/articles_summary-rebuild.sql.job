@@ -1,0 +1,21 @@
+/*
+class: rebuild-rename
+dest-table: $public_schema.articles_summary
+table-def: articles_summary.ct
+src-tables:
+  pv_log: $public_schema.pv_log
+*/
+
+insert into $dest_table
+select
+    date_trunc('day', logtime)::date as day
+    , id_param::integer as article_id
+    , count(*) as pv
+from
+    $pv_log
+where
+    controller = 'articles' and action = 'show'
+    and logtime < '$today'::date
+group by
+    1, 2
+;

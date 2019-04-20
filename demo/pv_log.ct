@@ -1,0 +1,9 @@
+--dest-table: $public_schema.pv_log
+
+create table $dest_table
+( logtime timestamp
+, controller varchar(100)
+, action varchar(100)
+, id_param integer
+)
+;
