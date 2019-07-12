@@ -1,0 +1,10 @@
+--dest-table: impression_summary
+
+create table $dest_table
+( data_date date
+, platform_id integer
+, device_type_id integer
+, impressions bigint
+)
+;
+

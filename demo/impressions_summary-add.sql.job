@@ -1,0 +1,21 @@
+/*
+class: insert-delta
+dest-table: $public_schema.impressions_summary
+table-def: impressions_summary.ct
+src-tables:
+    impressions: $ad_schema.impressions
+delete-cond: "data_date = '$data_date'::date"
+*/
+
+insert into $dest_table
+select
+    '$data_date'::date as data_date
+    , platform_id
+    , device_type
+    , count(*) as impressions
+from
+    $impressions
+group by
+    1, 2, 3
+;
+ 
