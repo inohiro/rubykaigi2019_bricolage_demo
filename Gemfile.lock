@@ -24,7 +24,7 @@ GEM
       aws-sdk-s3 (~> 1)
       aws-sdk-sns (~> 1)
       pg (~> 0.18.0)
-    jmespath (1.4.0)
+    jmespath (1.6.1)
     pg (0.18.4)
 
 PLATFORMS
